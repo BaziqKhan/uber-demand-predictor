@@ -75,7 +75,7 @@ target/
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
-/data/raw
+/data/raw/
 
 # Mac OS-specific storage files
 .DS_Store

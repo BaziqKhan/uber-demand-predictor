@@ -22,3 +22,11 @@ stages:
       - models/scaler.joblib
       - models/kmeans.joblib
       - data/processed/features.csv
+  features_processing:
+    cmd: python src/features/feature_processing.py
+    deps:
+    - src/features/feature_processing.py
+    - data/processed/features.csv
+    outs:
+    - data/processed/train_data.csv
+    - data/processed/test_data.csv
