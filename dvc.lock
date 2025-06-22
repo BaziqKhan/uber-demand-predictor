@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+    - path: data/raw/yellow_tripdata_2016-01.csv
+      hash: md5
+      md5: dbbfeaf3e090c885588085f0f40acc38
+      size: 1708674492
+    - path: data/raw/yellow_tripdata_2016-02.csv
+      hash: md5
+      md5: b5403017ef15378aad4d477542065962
+      size: 1783554554
+    - path: data/raw/yellow_tripdata_2016-03.csv
+      hash: md5
+      md5: fbc95c81a17ef549e64881a456662460
+      size: 1914669757
+    - path: src/data/data_ingestion.py
+      hash: md5
+      md5: fc29e821c58c5af68c0eb5c2ec554490
+      size: 1973
+    outs:
+    - path: data/interim/cleaned_data.csv
+      hash: md5
+      md5: dfd723e2f538f5475039d72d42c235d2
+      size: 1924079864
+  feature_extraction:
+    cmd: python src/features/extract_features.py
+    deps:
+    - path: data/interim/cleaned_data.csv
+      hash: md5
+      md5: dfd723e2f538f5475039d72d42c235d2
+      size: 1924079864
+    - path: src/features/extract_features.py
+      hash: md5
+      md5: d36fab0657ab25efa6fe895c0f00bdee
+      size: 2109
+    params:
+      params.yaml:
+        extract_features.ewm.alpha: 0.4
+        extract_features.minibatchkmeans.n_clusters: 30
+        extract_features.minibatchkmeans.n_init: 10
+        extract_features.minibatchkmeans.random_state: 42
+    outs:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: 3428633b0a90029040ce6156042fa2c6
+      size: 8367457
+    - path: models/kmeans.joblib
+      hash: md5
+      md5: 564ff14e09f7455ff4d7c27b28a05d3f
+      size: 143771
+    - path: models/scaler.joblib
+      hash: md5
+      md5: cf2c91f3d39deba23298c30d93d06ce6
+      size: 951

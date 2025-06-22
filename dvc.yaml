@@ -1,0 +1,24 @@
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+      - src/data/data_ingestion.py
+      - data/raw/yellow_tripdata_2016-01.csv
+      - data/raw/yellow_tripdata_2016-02.csv
+      - data/raw/yellow_tripdata_2016-03.csv
+    outs:
+      - data/interim/cleaned_data.csv
+  feature_extraction:
+    cmd: python src/features/extract_features.py
+    deps:
+      - src/features/extract_features.py
+      - data/interim/cleaned_data.csv
+    params:
+      - extract_features.minibatchkmeans.n_clusters
+      - extract_features.minibatchkmeans.n_init
+      - extract_features.minibatchkmeans.random_state
+      - extract_features.ewm.alpha
+    outs:
+      - models/scaler.joblib
+      - models/kmeans.joblib
+      - data/processed/features.csv
