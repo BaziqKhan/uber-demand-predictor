@@ -1,0 +1,12 @@
+digest: 2f730e2a
+name: dataset
+profile: '{"num_rows": 88501, "num_elements": 708008}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "region", "required": true},
+  {"type": "long", "name": "total_pickups", "required": true}, {"type": "double",
+  "name": "avg_pickups", "required": true}, {"type": "double", "name": "lag_1", "required":
+  true}, {"type": "double", "name": "lag_2", "required": true}, {"type": "double",
+  "name": "lag_3", "required": true}, {"type": "double", "name": "lag_4", "required":
+  true}, {"type": "long", "name": "day of week", "required": true}]}'
+source: '{"tags": {"mlflow.user": "baziq", "mlflow.source.name": "src/models/evaluation.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "af87010dd776797cc13b5f147dfa2b81e26bc539"}}'
+source_type: code

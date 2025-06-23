@@ -25,8 +25,26 @@ stages:
   features_processing:
     cmd: python src/features/feature_processing.py
     deps:
-    - src/features/feature_processing.py
-    - data/processed/features.csv
+      - src/features/feature_processing.py
+      - data/processed/features.csv
     outs:
-    - data/processed/train_data.csv
-    - data/processed/test_data.csv
+      - data/processed/train_data.csv
+      - data/processed/test_data.csv
+  training_phase:
+    cmd: python src/models/train.py
+    deps:
+      - src/models/train.py
+      - data/processed/train_data.csv
+    outs:
+      - models/transformer.joblib
+      - models/model.joblib
+  evaluation_phase:
+    cmd: python src/models/evaluation.py
+    deps:
+      - src/models/evaluation.py
+      - data/processed/train_data.csv
+      - data/processed/test_data.csv
+      - models/transformer.joblib
+      - models/model.joblib
+    outs:
+      - run_information.json

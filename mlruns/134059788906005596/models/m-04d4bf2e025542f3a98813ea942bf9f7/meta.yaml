@@ -1,0 +1,10 @@
+artifact_location: mlflow-artifacts:/134059788906005596/models/m-04d4bf2e025542f3a98813ea942bf9f7/artifacts
+creation_timestamp: 1750693799565
+experiment_id: '134059788906005596'
+last_updated_timestamp: 1750693803536
+model_id: m-04d4bf2e025542f3a98813ea942bf9f7
+model_type: ''
+name: demand_prediction
+source_run_id: 65c26fc9821d4f39a6c7ffd28f3fbd30
+status: 2
+status_message: null
