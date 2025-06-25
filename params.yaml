@@ -2,6 +2,6 @@ extract_features:
   minibatchkmeans:
     n_clusters: 30
     n_init: 10
-    random_state: 42
+    random_state: 41
   ewm:
     alpha: 0.4

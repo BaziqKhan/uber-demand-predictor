@@ -19,11 +19,6 @@ stages:
       hash: md5
       md5: fc29e821c58c5af68c0eb5c2ec554490
       size: 1973
-    outs:
-    - path: data/interim/cleaned_data.csv
-      hash: md5
-      md5: dfd723e2f538f5475039d72d42c235d2
-      size: 1924079864
   feature_extraction:
     cmd: python src/features/extract_features.py
     deps:
@@ -40,27 +35,27 @@ stages:
         extract_features.ewm.alpha: 0.4
         extract_features.minibatchkmeans.n_clusters: 30
         extract_features.minibatchkmeans.n_init: 10
-        extract_features.minibatchkmeans.random_state: 42
+        extract_features.minibatchkmeans.random_state: 41
     outs:
     - path: data/processed/features.csv
       hash: md5
-      md5: 3428633b0a90029040ce6156042fa2c6
-      size: 8367457
+      md5: 8daa01b7d56d30b1534bbc200660ce68
+      size: 8385542
     - path: models/kmeans.joblib
       hash: md5
-      md5: 564ff14e09f7455ff4d7c27b28a05d3f
-      size: 143771
+      md5: 87d29306faf980b5378fe28d8e974af3
+      size: 141179
     - path: models/scaler.joblib
       hash: md5
-      md5: cf2c91f3d39deba23298c30d93d06ce6
+      md5: 3a538ffafd17171b5b1965a79f9b4c1e
       size: 951
   features_processing:
     cmd: python src/features/feature_processing.py
     deps:
     - path: data/processed/features.csv
       hash: md5
-      md5: 3428633b0a90029040ce6156042fa2c6
-      size: 8367457
+      md5: 8daa01b7d56d30b1534bbc200660ce68
+      size: 8385542
     - path: src/features/feature_processing.py
       hash: md5
       md5: a5aedb5acb5ce31cdae339280370e010
@@ -68,19 +63,19 @@ stages:
     outs:
     - path: data/processed/test_data.csv
       hash: md5
-      md5: 76c76e515caa0fcd476487b3ca79b823
-      size: 4940946
+      md5: afe304ee026e59068324e2ca6a469b19
+      size: 4967372
     - path: data/processed/train_data.csv
       hash: md5
-      md5: b3685261357c2d942fb628536c6bc816
-      size: 9464526
+      md5: 9ea14247288569af88a7906cd32018b2
+      size: 9479194
   training_phase:
     cmd: python src/models/train.py
     deps:
     - path: data/processed/train_data.csv
       hash: md5
-      md5: b3685261357c2d942fb628536c6bc816
-      size: 9464526
+      md5: 9ea14247288569af88a7906cd32018b2
+      size: 9479194
     - path: src/models/train.py
       hash: md5
       md5: 717fef8ae078fe99977454e8ce9a7206
@@ -88,31 +83,31 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 1df0e85c655face05e06343578a72fb9
-      size: 1209
+      md5: c1b4b32818f9408c9ecd530410e36a10
+      size: 1208
     - path: models/transformer.joblib
       hash: md5
-      md5: 8a8e1898402107547d21347d94abb392
-      size: 3224
+      md5: fe576c8490a7a3ace70fdb9bd53e8963
+      size: 3221
   evaluation_phase:
     cmd: python src/models/evaluation.py
     deps:
     - path: data/processed/test_data.csv
       hash: md5
-      md5: 76c76e515caa0fcd476487b3ca79b823
-      size: 4940946
+      md5: afe304ee026e59068324e2ca6a469b19
+      size: 4967372
     - path: data/processed/train_data.csv
       hash: md5
-      md5: b3685261357c2d942fb628536c6bc816
-      size: 9464526
+      md5: 9ea14247288569af88a7906cd32018b2
+      size: 9479194
     - path: models/model.joblib
       hash: md5
-      md5: 1df0e85c655face05e06343578a72fb9
-      size: 1209
+      md5: c1b4b32818f9408c9ecd530410e36a10
+      size: 1208
     - path: models/transformer.joblib
       hash: md5
-      md5: 8a8e1898402107547d21347d94abb392
-      size: 3224
+      md5: fe576c8490a7a3ace70fdb9bd53e8963
+      size: 3221
     - path: src/models/evaluation.py
       hash: md5
       md5: 18c8c4f99173d9ba9709e5729ec9dffc
@@ -120,14 +115,14 @@ stages:
     outs:
     - path: run_information.json
       hash: md5
-      md5: 2551ff05025005450442db5413a9c749
+      md5: 797d009efc407a51e940c1cff3d8829a
       size: 175
   register_model:
     cmd: python src/models/register_model.py
     deps:
     - path: run_information.json
       hash: md5
-      md5: 2551ff05025005450442db5413a9c749
+      md5: 797d009efc407a51e940c1cff3d8829a
       size: 175
     - path: src/models/register_model.py
       hash: md5

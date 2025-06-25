@@ -6,8 +6,6 @@ stages:
       - data/raw/yellow_tripdata_2016-01.csv
       - data/raw/yellow_tripdata_2016-02.csv
       - data/raw/yellow_tripdata_2016-03.csv
-    outs:
-      - data/interim/cleaned_data.csv
   feature_extraction:
     cmd: python src/features/extract_features.py
     deps:

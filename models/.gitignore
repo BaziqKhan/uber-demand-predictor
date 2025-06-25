@@ -1,2 +1,4 @@
 /scaler.joblib
 /kmeans.joblib
+/transformer.joblib
+/model.joblib

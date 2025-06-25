@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+joblib
+streamlit
+dagshub
+mlflow==2.9.2
+setuptools

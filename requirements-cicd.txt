@@ -1,0 +1,6 @@
+mlflow==2.9.2
+dagshub
+awscli
+pytest
+scikit-learn
+dvc[s3]==3.60.1
