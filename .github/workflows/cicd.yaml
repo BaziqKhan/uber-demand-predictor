@@ -61,5 +61,5 @@ jobs:
       - name: Push Image to Docker Hub
         if: success()
         run: |
-          docker tag uber-demand-prediction-model:latest ${{ secrets.DOCKER_PASSWORD }}/uber-demand-prediction-model:latest
+          docker tag uber-demand-prediction-model:latest baziqkhan/uber-demand-prediction-model:latest
           docker push baziqkhan/uber-demand-prediction-model:latest
