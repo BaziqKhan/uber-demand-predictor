@@ -78,6 +78,9 @@ jobs:
       - name: Trigger Code Deploy Deployment
         if: success()
         run: |
-          aws deploy create-deployment --application-name uber-demand-application --deployment-group-name uber-demand-dg \
-          --deployment-config-name CodeDeployDefault.OneAtATime --s3-location bucket=code-deploy-bucket-baziq,key=deployment.zip, \
-          bundleType=zip --file-exists-behavior OVERWRITE --region eu-north-1
+          aws deploy create-deployment --application-name uber-demand-application \
+          --deployment-group-name uber-demand-dg \
+          --deployment-config-name CodeDeployDefault.OneAtATime \
+          --s3-location bucket=code-deploy-bucket-baziq,key=deployment.zip,bundleType=zip \
+          --file-exists-behavior OVERWRITE \
+          --region eu-north-1
