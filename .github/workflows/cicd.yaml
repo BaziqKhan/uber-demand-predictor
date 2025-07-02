@@ -80,5 +80,5 @@ jobs:
         run: |
           aws deploy create-deployment --application-name uber-demand-application --deployment-group-name uber-demand-dg \
           --deployment-config-name CodeDeployDefault.OneAtATime --s3-location bucket=code-deploy-bucket-baziq,key=deployment.zip, \
-          bundleType=zip --file-exists-behaviour OVERWRITE
+          bundleType=zip --file-exists-behaviour OVERWRITE --region eu-north-1
 
