@@ -14,7 +14,7 @@ dagshub.init(repo_owner='baziq12', repo_name='uber-demand-predictor', mlflow=Tru
 mlflow.set_tracking_uri('https://dagshub.com/baziq12/uber-demand-predictor.mlflow')
 
 register_model_name = 'uber_demand_prediction'
-stage = 'Staging'
+stage = 'Production'
 model_uri = f'models:/{register_model_name}/{stage}'
 
 model = mlflow.sklearn.load_model(model_uri=model_uri)
